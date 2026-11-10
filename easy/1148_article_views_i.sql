@@ -4,7 +4,7 @@
 -- Link        : https://leetcode.com/problems/article-views-i/
 -- Tópicos     : SELECT, WHERE comparando colunas, DISTINCT, ORDER BY, alias
 -- Banco       : MySQL (padrão do LeetCode)
--- Status      : [ ] Resolvi sozinho   [ ] Resolvi com ajuda   [ ] Não consegui
+-- Status      : [x] Resolvi sozinho   [ ] Resolvi com ajuda   [ ] Não consegui
 -- ============================================================================
 
 /* ----------------------------------------------------------------------------
@@ -97,7 +97,9 @@ três detalhes tem uma palavra-chave própria do SQL.
 -- ============================================================================
 -- 1) MINHA SOLUÇÃO
 -- ============================================================================
-select author_id as id from Views where author_id = viewer_id group by id
+-- v1 (minha, 2026-11-10): select author_id as id from Views where author_id = viewer_id group by id
+-- v2 (minha; a IA só digitou o order by a meu pedido, ver fim da seção 2):
+select author_id as id from Views where author_id = viewer_id group by id order by id;
 
 
 
@@ -140,6 +142,18 @@ ORDER BY id;
 --   ("agrupe"). Quando não há agregação, DISTINCT comunica melhor a intenção.
 -- - Sem ponto e vírgula no fim.
 -- - Maiúsculas nas palavras-chave: convenção de leitura, não regra.
+--
+-- --- Correção v2 (2026-11-10) -------------------------------------------------
+-- O que mudou na seção 1: `order by id` no fim (e o ;). A ideia foi minha; a
+-- IA só digitou depois de eu dizer o que fazer.
+--
+-- O que eu pensei (minhas palavras, ditas no chat):
+--   "Para ordenar é só a gente botar um order by id, normalmente ele já vai
+--    da maneira que a gente quer, que é de maneira crescente."
+--
+-- Verificação da IA: certo. ORDER BY sem ASC/DESC ordena em ordem crescente,
+-- o ASC é o padrão. Rodei a v2 na tabela do exemplo (4, 7) e com os autores
+-- extras (2, 4, 7, 10): resultado correto e, agora, com ordem garantida.
 
 
 -- ============================================================================

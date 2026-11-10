@@ -290,7 +290,12 @@ class SolucaoIA:
 # ==============================================================================
 # 4) COMO REPRODUZI A PARTIR DA AJUDA
 # ==============================================================================
-# (Preencho eu, com minhas palavras, depois de usar a dica.)
+# Aprendi, após a ajuda da IA, a comparar o tamanho da lista para ver se ele é
+# diferente de 0 antes de poder retirar um elemento, para evitar um erro. E
+# aprendi também, com a comparação com a solução da IA, que o lista[-1] não
+# remove o último elemento (ele vai dar erro, na verdade ele não remove), e o
+# lista.pop() sim. Então fiz a inserção do lista.pop().
+# (Ditado por mim no chat em 2026-11-10; a IA só transcreveu.)
 
 
 # ==============================================================================

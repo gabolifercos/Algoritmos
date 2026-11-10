@@ -159,7 +159,10 @@ class SolucaoIA:
 # ==============================================================================
 # 5) O QUE APRENDI
 # ==============================================================================
-# (Preencho eu ao terminar.)
+# Aprendi o uso de dicionários para guardar elementos a partir das suas
+# aparições (quantas vezes cada um aparece), e a comparação de dicionários
+# com if.
+# (Ditado por mim no chat em 2026-11-10; a IA só transcreveu.)
 
 
 # ==============================================================================

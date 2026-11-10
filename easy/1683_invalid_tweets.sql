@@ -4,7 +4,7 @@
 -- Link        : https://leetcode.com/problems/invalid-tweets/
 -- Tópicos     : SELECT, WHERE, funções de texto (tamanho de string)
 -- Banco       : MySQL (padrão do LeetCode)
--- Status      : [ ] Resolvi sozinho   [ ] Resolvi com ajuda   [ ] Não consegui
+-- Status      : [ ] Resolvi sozinho   [x] Resolvi com ajuda   [ ] Não consegui
 -- ============================================================================
 
 /* ----------------------------------------------------------------------------
@@ -83,7 +83,9 @@ descobrir qual é qual. E atenção ao "estritamente maior": um tweet com exatos
 -- ============================================================================
 -- 1) MINHA SOLUÇÃO
 -- ============================================================================
-select tweet_id from Tweets where len(content) <= 15
+-- v1 (minha, 2026-11-10): select tweet_id from Tweets where len(content) <= 15
+-- v2 (corrigida pela IA a meu pedido, ver seção 3):
+select tweet_id from Tweets where length(content) > 15;
 
 
 
@@ -126,18 +128,47 @@ WHERE CHAR_LENGTH(content) > 15;
 -- - Como conferir sozinho antes de dizer "terminei": cole o bloco CREATE/INSERT
 --   deste arquivo e a sua query em https://sqliteonline.com. Lá o len() já
 --   teria dado erro na hora, e o resultado invertido ficaria na cara.
+--
+-- --- Correção v2 (2026-11-10), feita pela IA a meu pedido ---------------------
+-- O que mudou na seção 1: len -> length, <= 15 -> > 15, e o ; no fim. Mantive
+-- o estilo em minúsculas da v1. Usei length (e não char_length) porque é o
+-- nome que você citou na seção 5 e roda também no SQLite do bloco de testes;
+-- no LeetCode as duas passam para este enunciado.
+-- Verificação: tabela do exemplo devolve 2; com as linhas extras de 15, 16 e
+-- 0 caracteres devolve 2 e 4. Correto nos dois limites.
 
 
 -- ============================================================================
 -- 3) AJUDA QUE PEDI (preencher só se precisei)
 -- ============================================================================
--- Não pedi ajuda neste exercício.
+-- Registro de cada ajuda que pedi à IA. Aqui a ajuda foi diferente das outras:
+-- depois da comparação apontar os dois erros, pedi que a própria IA aplicasse
+-- a correção.
+--
+-- --- Dica 1 (2026-11-10) ------------------------------------------------------
+-- Query que eu tinha quando pedi:
+--
+--     select tweet_id from Tweets where len(content) <= 15
+--
+-- Prompt (o que pedi):
+--
+--     "No primeiro pode corrigir por mim, porque eu já entendi o conceito"
+--     (o "primeiro" era este exercício, na lista de pendências do chat)
+--
+-- Resposta da IA:
+--
+--     Correção aplicada na seção 1 (ver "Correção v2" no fim da seção 2):
+--     len não existe em SQL, virou length; a condição estava invertida
+--     (selecionava os válidos), virou > 15; e entrou o ; no fim.
+--
 
 
 -- ============================================================================
 -- 4) COMO REPRODUZI A PARTIR DA AJUDA
 -- ============================================================================
--- Não se aplica: resolvi sem pedir ajuda.
+-- Não reproduzi: pedi que a IA corrigisse por mim, porque eu já tinha entendido
+-- o conceito (a função que mede o texto e o sentido da comparação).
+-- (Ditado por mim no chat em 2026-11-10; a IA só transcreveu.)
 
 
 -- ============================================================================
